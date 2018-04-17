@@ -40,14 +40,14 @@ Import-Module -Name AzureRM
 # Deployment Variables
 $credential = New-Object System.Management.Automation.PSCredential ($GlobalAdminUserName, $GlobalAdminPassword) # Creating the GlobalAdmin credential object
 
-try {
-    Write-Verbose "Connecting to the Global Administrator Account for Subscription $subscriptionId."
+#try {
+    #Write-Verbose "Connecting to the Global Administrator Account for Subscription $subscriptionId."
     Login-AzureRmAccount -Credential $credential -Subscription $subscriptionId -ErrorAction Stop
-    Write-Verbose "Established connection to Global Administrator Account."
-}
-catch {
-    Throw "Failed to connect to the Global Administrator Account. Run 'Login-AzureRmAccount -Subscription $subscriptionId' to manually troubleshoot."
-}
+    #Write-Verbose "Established connection to Global Administrator Account."
+#}
+#catch {
+    #Throw "Failed to connect to the Global Administrator Account. Run 'Login-AzureRmAccount -Subscription $subscriptionId' to manually troubleshoot."
+#}
 
          $app_services_plans = Get-AzureRmAppServicePlan
          foreach ($app in $app_services_plans) 
