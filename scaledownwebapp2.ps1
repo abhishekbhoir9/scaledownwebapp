@@ -33,7 +33,7 @@ param
     [Alias("Password")]
     [ValidateNotNullOrEmpty()]
     [securestring]
-    $GlobalAdminPassword,
+    $GlobalAdminPassword
 )
 
 # Deployment Variables
