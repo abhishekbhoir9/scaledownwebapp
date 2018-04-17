@@ -35,7 +35,7 @@ param
     [securestring]
     $GlobalAdminPassword
 )
-
+Install-Module -Name AzureRM -AllowClobber
 # Deployment Variables
 $credential = New-Object System.Management.Automation.PSCredential ($GlobalAdminUserName, $GlobalAdminPassword) # Creating the GlobalAdmin credential object
 
