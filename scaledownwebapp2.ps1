@@ -65,6 +65,6 @@ catch {
 
 
     # # Stop Deployment Transcript
-    Stop-Transcript
+   # Stop-Transcript
 
     # ############### End of Script ###############
