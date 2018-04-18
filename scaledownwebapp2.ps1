@@ -18,8 +18,7 @@ param
     [Parameter(Mandatory=$true)]
     [Alias("Subscription")]
     [ValidateNotNullOrEmpty()]
-    #[guid]
-    [string]
+    [guid]
     $SubscriptionId,
 
     # Enter AAD Username with Owner permission at subscription level and Global Administrator at AAD level.
@@ -43,7 +42,7 @@ $credential = New-Object System.Management.Automation.PSCredential ($GlobalAdmin
 
 #try {
     #Write-Verbose "Connecting to the Global Administrator Account for Subscription $subscriptionId."
-    Login-AzureRmAccount -Credential $credential -Subscription $SubscriptionId 
+    Login-AzureRmAccount -Credential $credential -SubscriptionId $SubscriptionId 
     #-ErrorAction Stop
     #Write-Verbose "Established connection to Global Administrator Account."
 #}
