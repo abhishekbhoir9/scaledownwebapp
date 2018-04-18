@@ -42,7 +42,7 @@ $credential = New-Object System.Management.Automation.PSCredential ($GlobalAdmin
 
 #try {
     #Write-Verbose "Connecting to the Global Administrator Account for Subscription $subscriptionId."
-    Login-AzureRmAccount -Credential $credential -Subscription $subscriptionId -ErrorAction Stop
+    Login-AzureRmAccount -Credential $credential -Subscription $SubscriptionId -ErrorAction Stop
     #Write-Verbose "Established connection to Global Administrator Account."
 #}
 #catch {
