@@ -18,7 +18,8 @@ param
     [Parameter(Mandatory=$true)]
     [Alias("Subscription")]
     [ValidateNotNullOrEmpty()]
-    [guid]
+    #[guid]
+    [string]
     $SubscriptionId,
 
     # Enter AAD Username with Owner permission at subscription level and Global Administrator at AAD level.
