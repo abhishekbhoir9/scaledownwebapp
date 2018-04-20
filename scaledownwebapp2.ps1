@@ -55,18 +55,29 @@ foreach ($subscription in $AzureSubscriptions)
          $id = ($app).ID
 	     $rgposition = $id.Split("/")
 	     $rg = $rgposition[4]
-         $values = $app.tags
+         $values = $app.Tags
             #scale down web app to Free Tier
-            if (($app.ServerFarmWithRichSkuName -eq 'appserviceplanforwebappfree') -and ($values.Values -ne "Do not scale down")) 
-            { #$app.ServerFarmWithRichSkuName
+            if ($app.ServerFarmWithRichSkuName -eq 'appserviceplanforwebappfree')
+            { 
+                foreach ($value in $values){
+                if(-Not ($value.Values -eq "Do not scale down"))
+                {
                 $name = $app.ServerFarmWithRichSkuName
                 Set-AzureRmAppServicePlan -Name $name -ResourceGroupName $rg -Tier "Free"
+                }
+               }
             }
-	        if (($app.ServerFarmWithRichSkuName -eq 'scaledownsaasplan') -and ($values.Values -ne "Do not scale down")) 
-            { #$app.ServerFarmWithRichSkuName
+	        if ($app.ServerFarmWithRichSkuName -eq 'scaledownsaasplan')
+            {
+                foreach ($value in $values){
+                if(-Not ($value.Values -eq "Do not scale down"))
+                {
                 $name = $app.ServerFarmWithRichSkuName
                 Set-AzureRmAppServicePlan -Name $name -ResourceGroupName $rg -Tier "Free"
-            }
+                }
+               }
+
+            } 
         }
     
     }
