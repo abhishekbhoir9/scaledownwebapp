@@ -40,9 +40,10 @@ Import-Module -Name AzureRM
 # Deployment Variables
 $credential = New-Object System.Management.Automation.PSCredential ($GlobalAdminUserName, $GlobalAdminPassword) # Creating the GlobalAdmin credential object
 
-Login-AzureRmAccount -Credential $credential -SubscriptionId $SubscriptionId 
+Login-AzureRmAccount -Credential $credential -TenantId c7f41dc4-b09e-4561-99de-efd4f9592fec
+#-SubscriptionId $SubscriptionId 
 
-$AzureSubscriptions = Get-AzureRMSubscription
+$AzureSubscriptions = Get-AzureRMSubscription -TenantId c7f41dc4-b09e-4561-99de-efd4f9592fec
 foreach ($subscription in $AzureSubscriptions) 
    {
     	Select-AzureRmSubscription -SubscriptionId $subscription.Id
