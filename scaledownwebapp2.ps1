@@ -46,7 +46,7 @@ Login-AzureRmAccount -Credential $credential -TenantId c7f41dc4-b09e-4561-99de-e
 $AzureSubscriptions = Get-AzureRMSubscription -TenantId c7f41dc4-b09e-4561-99de-efd4f9592fec
 foreach ($subscription in $AzureSubscriptions) 
    {
-    	Select-AzureRmSubscription -SubscriptionId $subscription.Id
+    	Select-AzureRmSubscription -SubscriptionId $subscription.Id -TenantId c7f41dc4-b09e-4561-99de-efd4f9592fec
     
 	 $app_services_plans = Get-AzureRmAppServicePlan
          foreach ($app in $app_services_plans) 
