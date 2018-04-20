@@ -45,7 +45,7 @@ Login-AzureRmAccount -Credential $credential -SubscriptionId $SubscriptionId
 $AzureSubscriptions = Get-AzureRMSubscription
 foreach ($subscription in $AzureSubscriptions) 
    {
-    	Select-AzureRmSubscription -SubscriptionName $subscription.Name
+    	Select-AzureRmSubscription -SubscriptionId $subscription.Id
     
 	 $app_services_plans = Get-AzureRmAppServicePlan
          foreach ($app in $app_services_plans) 
