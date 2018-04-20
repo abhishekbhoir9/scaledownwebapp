@@ -16,10 +16,10 @@ param
 (
     # Enter Subscription Id for deployment.
     [Parameter(Mandatory=$true)]
-    [Alias("Subscription")]
+    [Alias("TenantId")]
     [ValidateNotNullOrEmpty()]
     [guid]
-    $SubscriptionId,
+    $TenantId,
 
     # Enter AAD Username with Owner permission at subscription level and Global Administrator at AAD level.
     [Parameter(Mandatory=$true)]
@@ -46,7 +46,8 @@ Login-AzureRmAccount -Credential $credential -TenantId c7f41dc4-b09e-4561-99de-e
 $AzureSubscriptions = Get-AzureRMSubscription -TenantId c7f41dc4-b09e-4561-99de-efd4f9592fec
 foreach ($subscription in $AzureSubscriptions) 
    {
-    	Select-AzureRmSubscription -SubscriptionId $subscription.Id -TenantId c7f41dc4-b09e-4561-99de-efd4f9592fec
+    	Select-AzureRmSubscription -SubscriptionId $subscription.Id -TenantId $TenantId
+	#-TenantId c7f41dc4-b09e-4561-99de-efd4f9592fec
     
 	 $app_services_plans = Get-AzureRmAppServicePlan
          foreach ($app in $app_services_plans) 
