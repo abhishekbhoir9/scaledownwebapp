@@ -16,7 +16,6 @@ param
 (
     # Enter Subscription Id for deployment.
     [Parameter(Mandatory=$true)]
-    [Alias("TenantId")]
     [ValidateNotNullOrEmpty()]
     [guid]
     $TenantId,
