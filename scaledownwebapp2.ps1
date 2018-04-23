@@ -57,7 +57,7 @@ foreach ($subscription in $AzureSubscriptions)
 	     $rg = $rgposition[4]
          $values = $app.Tags
             #scale down web app to Free Tier
-            if ($app.ServerFarmWithRichSkuName -eq 'appserviceplanforwebappfree')
+            if ($app.ServerFarmWithRichSkuName -eq 'CloudneetiAppServicePlan')
             { 
                 foreach ($value in $values){
                 if(-Not ($value.Values -eq "Do not scale down"))
@@ -67,7 +67,7 @@ foreach ($subscription in $AzureSubscriptions)
                 }
                }
             }
-	        if ($app.ServerFarmWithRichSkuName -eq 'scaledownsaasplan')
+	        if ($app.ServerFarmWithRichSkuName -eq 'cnmarketingappPlan')
             {
                 foreach ($value in $values){
                 if(-Not ($value.Values -eq "Do not scale down"))
