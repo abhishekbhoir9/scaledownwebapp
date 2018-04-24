@@ -46,7 +46,7 @@ $AzureSubscriptions = Get-AzureRMSubscription -TenantId $TenantId
 foreach ($subscription in $AzureSubscriptions) 
    {
     	Select-AzureRmSubscription -SubscriptionId $subscription.Id -TenantId $TenantId
-	#-TenantId c7f41dc4-b09e-4561-99de-efd4f9592fec
+	
     
 	 $app_services_plans = Get-AzureRmAppServicePlan
          foreach ($app in $app_services_plans) 
@@ -59,13 +59,13 @@ foreach ($subscription in $AzureSubscriptions)
             #scale down web app to Free Tier
             if ($app.ServerFarmWithRichSkuName -eq 'CloudneetiAppServicePlan')
             { 
-                foreach ($value in $values){
-                if(-Not ($value.Values -eq "Do not scale down"))
-                {
+                #foreach ($value in $values){
+                #if(-Not ($value.Values -eq "Do not scale down"))
+                #{
                 $name = $app.ServerFarmWithRichSkuName
                 Set-AzureRmAppServicePlan -Name $name -ResourceGroupName $rg -Tier "Free"
-                }
-               }
+                #}
+               #}
             }
 	        if ($app.ServerFarmWithRichSkuName -eq 'cnmarketingappPlan')
             {
