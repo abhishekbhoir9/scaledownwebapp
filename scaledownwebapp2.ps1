@@ -34,7 +34,7 @@ param
     [securestring]
     $GlobalAdminPassword
 )
-Install-Module -Name AzureRM -AllowClobber
+#Install-Module -Name AzureRM -AllowClobber
 Import-Module -Name AzureRM
 # Deployment Variables
 $credential = New-Object System.Management.Automation.PSCredential ($GlobalAdminUserName, $GlobalAdminPassword) # Creating the GlobalAdmin credential object
@@ -51,21 +51,21 @@ foreach ($subscription in $AzureSubscriptions)
 	 $app_services_plans = Get-AzureRmAppServicePlan
          foreach ($app in $app_services_plans) 
         {
-
          $id = ($app).ID
 	     $rgposition = $id.Split("/")
 	     $rg = $rgposition[4]
          $values = $app.Tags
+         $values
             #scale down web app to Free Tier
             if ($app.ServerFarmWithRichSkuName -eq 'CloudneetiAppServicePlan')
             { 
-                #foreach ($value in $values){
-                #if(-Not ($value.Values -eq "Do not scale down"))
-                #{
+                foreach ($value in $values){
+                if(-Not ($value.Values -eq "Do not scale down"))
+                {
                 $name = $app.ServerFarmWithRichSkuName
                 Set-AzureRmAppServicePlan -Name $name -ResourceGroupName $rg -Tier "Free"
-                #}
-               #}
+                }
+               }
             }
 	        if ($app.ServerFarmWithRichSkuName -eq 'cnmarketingappPlan')
             {
